@@ -1,0 +1,686 @@
+<!-- I-Run-Healthy — project website
+     All text lives in the CONTENT object below and in IRH_Website_Content.xlsx.
+     Structure mirrors shield.insep.fr. Palette: European Athletics blue + orange. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The project | I-Run-Healthy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#052C55; --navy-2:#0A3D74; --blue:#0E5AA7;
+  --orange:#E8621C; --amber:#F59B21;
+  --tint:#E7EFF7; --paper:#F7F9FB; --ink:#14202C;
+  --muted:#5A6B7A; --rule:#D3DFEA; --white:#fff;
+  --display:"Barlow Condensed","Arial Narrow",Helvetica,sans-serif;
+  --body:"Source Sans 3",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --wrap:1120px; --gut:clamp(18px,4vw,40px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:var(--blue)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--gut)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;z-index:99;background:var(--white);padding:10px 16px;border-radius:3px}
+
+/* Top utility bar */
+.util{background:var(--navy);color:#C6D8EA;font-size:13px}
+.util .wrap{display:flex;align-items:center;gap:18px;justify-content:space-between;min-height:46px;flex-wrap:wrap}
+.eu{display:flex;align-items:center;gap:10px}
+.eu svg{display:block;border:1px solid rgba(255,255,255,.25)}
+.eu span{font-size:12px;letter-spacing:.02em;line-height:1.25;max-width:210px}
+.util-right{display:flex;align-items:center;gap:16px}
+.lang{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;font-size:13px}
+.lang b{color:var(--white)}
+.lang i{font-style:normal;opacity:.45}
+.grant{font-size:12px;opacity:.75;letter-spacing:.02em}
+
+/* Masthead + nav */
+.mast{background:var(--navy-2)}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;
+  padding-block:22px;flex-wrap:wrap}
+.brand{display:flex;align-items:baseline;gap:12px;text-decoration:none}
+.brand .mark{font-family:var(--display);font-weight:700;font-size:34px;letter-spacing:-.01em;
+  color:var(--white);text-transform:uppercase;line-height:1}
+.brand .mark em{font-style:normal;color:var(--amber)}
+.brand .sub{font-family:var(--display);font-weight:500;text-transform:uppercase;
+  letter-spacing:.16em;font-size:12px;color:#9FC0DE}
+.navtoggle{display:none;background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;
+  font-family:var(--display);text-transform:uppercase;letter-spacing:.1em;font-size:14px;
+  padding:8px 14px;border-radius:2px;cursor:pointer}
+nav.main{background:var(--blue)}
+nav.main ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap}
+nav.main a{display:block;padding:14px 22px;color:#DCEAF7;text-decoration:none;
+  font-family:var(--display);text-transform:uppercase;letter-spacing:.09em;
+  font-weight:600;font-size:16px;border-bottom:4px solid transparent;
+  transition:background .15s ease,color .15s ease}
+nav.main a:hover{background:rgba(255,255,255,.09);color:#fff}
+nav.main a[aria-current="page"]{color:#fff;border-bottom-color:var(--orange);background:rgba(0,0,0,.14)}
+
+/* Hero */
+.hero{position:relative;background:var(--navy);overflow:hidden}
+.hero .lanes{position:absolute;inset:0;opacity:.5}
+.hero .lanes span{position:absolute;left:0;right:0;height:1px;background:rgba(255,255,255,.14)}
+.hero .glow{position:absolute;right:-12%;top:-40%;width:60%;height:200%;
+  background:radial-gradient(closest-side,rgba(232,98,28,.5),transparent 70%)}
+.hero .wrap{position:relative;padding-block:clamp(40px,7vw,74px)}
+.hero .eyebrow{font-family:var(--display);text-transform:uppercase;letter-spacing:.2em;
+  font-size:13px;color:var(--amber);font-weight:600;margin:0 0 12px}
+.hero .htitle{font-family:var(--display);font-weight:700;color:#fff;
+  font-size:clamp(38px,6.4vw,72px);line-height:.98;margin:0 0 16px;letter-spacing:-.005em}
+.hero .hsub{color:#C9DCEE;max-width:58ch;margin:0;font-size:clamp(17px,2vw,20px)}
+.hero .rule{width:88px;height:5px;background:var(--orange);margin:22px 0 0}
+
+/* Breadcrumb */
+.crumb{background:var(--tint);border-bottom:1px solid var(--rule);font-size:14px}
+.crumb .wrap{padding-block:11px}
+.crumb a{color:var(--blue);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.crumb span{color:var(--muted)}
+
+/* Pages */
+.page{display:none}
+.page.is-on{display:block}
+.body-wrap{padding-block:clamp(34px,5vw,58px)}
+.lede{font-size:clamp(18px,2.2vw,21px);line-height:1.55;color:#22323F;max-width:74ch}
+h2.sec{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;
+  font-size:clamp(26px,3.4vw,34px);color:var(--navy);margin:52px 0 6px;line-height:1.1}
+.barline{width:60px;height:4px;background:var(--orange);margin-bottom:20px}
+p{max-width:76ch}
+
+/* Objectives */
+.objs{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:2px;
+  background:var(--rule);border:1px solid var(--rule)}
+.objs li{background:var(--white);display:grid;grid-template-columns:96px 1fr}
+.objs .tag{background:var(--tint);display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-weight:700;font-size:19px;color:var(--navy);
+  letter-spacing:.04em;border-right:3px solid var(--orange)}
+.objs .txt{padding:18px 22px}
+.objs .txt b{display:block;font-family:var(--display);font-size:19px;font-weight:600;
+  color:var(--navy-2);letter-spacing:.01em}
+.objs .txt span{display:block;margin-top:3px;font-size:16px;color:#33465A}
+
+/* Impact axes */
+.axes{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);margin-top:24px}
+.axis{background:var(--white);padding:22px 20px 24px}
+.axis .n{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.16em;
+  color:var(--orange);text-transform:uppercase}
+.axis h4{font-family:var(--display);font-weight:600;font-size:22px;color:var(--navy);
+  margin:6px 0 8px;letter-spacing:.01em}
+.axis p{font-size:15.5px;margin:0;color:#3A4C5E;line-height:1.55}
+
+/* Reach */
+.reach{background:var(--navy);color:#fff;margin-top:34px;padding:26px clamp(20px,3.5vw,32px)}
+.reach .rlabel{font-family:var(--display);text-transform:uppercase;letter-spacing:.16em;
+  font-size:13px;color:var(--amber);font-weight:600;margin:0 0 4px}
+.reach .rtext{color:#C9DCEE;margin:0 0 20px;font-size:16px;max-width:70ch}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:20px}
+.fig{border-left:3px solid var(--orange);padding-left:14px}
+.fig .num{font-family:var(--display);font-weight:700;font-size:clamp(34px,5vw,46px);
+  line-height:1;color:#fff}
+.fig .cap{font-size:14px;color:#A9C6E0;margin-top:5px;line-height:1.35}
+
+/* Calendar — simple list, no chart */
+.cal{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:2px;
+  background:var(--rule);border:1px solid var(--rule)}
+.cal li{background:var(--white);display:grid;grid-template-columns:118px 1fr 232px;align-items:center}
+.cal .ctag{align-self:stretch;display:flex;align-items:center;justify-content:center;
+  background:var(--tint);border-right:3px solid var(--orange);
+  font-family:var(--display);font-weight:700;font-size:19px;color:var(--navy);letter-spacing:.04em}
+.cal .cnm{padding:17px 22px;font-family:var(--display);font-weight:600;font-size:21px;
+  color:var(--navy-2);letter-spacing:.01em;line-height:1.2}
+.cal .cpd{padding:17px 22px 17px 0;text-align:right;font-family:var(--display);font-weight:600;
+  font-size:16px;letter-spacing:.09em;text-transform:uppercase;color:var(--orange);white-space:nowrap}
+
+/* Contact */
+.contact{background:var(--tint);border-left:5px solid var(--orange);
+  padding:26px clamp(20px,3.5vw,30px);margin-top:44px}
+.contact h2{font-family:var(--display);text-transform:uppercase;letter-spacing:.06em;
+  font-size:26px;color:var(--navy);margin:0 0 10px}
+.contact p{margin:0;max-width:70ch}
+
+/* Consortium */
+.orgphoto{background:var(--navy-2);color:#CBDEEF;padding:clamp(28px,5vw,52px) clamp(20px,4vw,40px);
+  margin-top:8px;position:relative;overflow:hidden}
+.orgphoto .lanes{position:absolute;inset:0;opacity:.4}
+.orgphoto .lanes span{position:absolute;left:0;right:0;height:1px;background:rgba(255,255,255,.13)}
+.orgphoto .op-in{position:relative}
+.orgphoto .op-t{font-family:var(--display);font-weight:700;font-size:clamp(22px,3.4vw,30px);
+  color:#fff;letter-spacing:.01em;margin:0 0 8px;text-transform:uppercase}
+.orgphoto p{margin:0;font-size:15.5px;max-width:78ch}
+.org{border-top:1px solid var(--rule);padding-top:30px;margin-top:38px}
+.org .oh{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:baseline}
+.org h3{font-family:var(--display);font-weight:700;font-size:clamp(23px,3vw,29px);
+  color:var(--navy);margin:0;letter-spacing:.01em}
+.pill{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.13em;
+  text-transform:uppercase;padding:5px 11px;border-radius:2px;background:var(--tint);
+  color:var(--navy-2);border:1px solid var(--rule)}
+.pill.lead{background:var(--orange);color:#fff;border-color:var(--orange)}
+.pill.assoc{background:var(--navy);color:#fff;border-color:var(--navy)}
+.roles{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:1px;
+  background:var(--rule);border:1px solid var(--rule)}
+.roles li{background:#fff;padding:12px 18px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}
+.roles .who{font-family:var(--display);font-weight:600;font-size:19px;color:var(--navy-2);letter-spacing:.01em}
+.roles .what{font-size:15.5px;color:#3F5266}
+
+/* Resources */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:26px}
+.card{background:#fff;border:1px solid var(--rule);border-top:4px solid var(--blue);
+  padding:22px 20px 24px;display:flex;flex-direction:column}
+.card h3{font-family:var(--display);font-weight:600;font-size:22px;color:var(--navy);
+  margin:0 0 8px;letter-spacing:.01em}
+.card p{font-size:15.5px;color:#3F5266;margin:0 0 16px;flex:1}
+.status{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);border-top:1px solid var(--rule);padding-top:11px}
+
+/* News */
+.items{margin-top:26px;border-top:1px solid var(--rule)}
+.item{display:grid;grid-template-columns:150px 1fr;border-bottom:1px solid var(--rule);padding:22px 0}
+.item .when{font-family:var(--display);font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  font-size:14px;color:var(--orange);padding-top:4px}
+.item h3{font-family:var(--display);font-weight:600;font-size:23px;color:var(--navy);
+  margin:0 0 6px;letter-spacing:.01em}
+.item p{margin:0;font-size:16px;color:#3A4C5E}
+
+/* Footer */
+footer{background:var(--navy);color:#B6CFE5;margin-top:60px;padding-block:40px 28px;font-size:15px}
+.fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:34px}
+footer h4{font-family:var(--display);text-transform:uppercase;letter-spacing:.14em;font-size:13px;
+  color:#fff;margin:0 0 12px;font-weight:600}
+footer ul{list-style:none;margin:0;padding:0}
+footer li{margin-bottom:7px}
+footer a{color:#B6CFE5;text-decoration:none}
+footer a:hover{color:#fff;text-decoration:underline}
+.fbrand .mark{font-family:var(--display);font-weight:700;font-size:28px;color:#fff;
+  text-transform:uppercase;line-height:1}
+.fbrand .mark em{font-style:normal;color:var(--amber)}
+.fbrand p{font-size:14px;color:#96B4CE;margin:10px 0 0;max-width:40ch}
+.fbot{border-top:1px solid rgba(255,255,255,.16);margin-top:30px;padding-top:18px;font-size:13px;
+  color:#8FAECB;display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
+.totop{background:none;border:0;color:#B6CFE5;font-family:var(--display);text-transform:uppercase;
+  letter-spacing:.1em;font-size:13px;cursor:pointer;padding:0}
+.totop:hover{color:#fff}
+
+@media (max-width:860px){
+  .cal li{grid-template-columns:96px 1fr}
+  .cal .cpd{grid-column:2;padding:0 22px 16px 22px;text-align:left}
+  .cal .cnm{padding-bottom:6px}
+  .fgrid{grid-template-columns:1fr;gap:26px}
+  .item{grid-template-columns:1fr;gap:6px}
+  .item .when{padding-top:0}
+}
+@media (max-width:620px){
+  .navtoggle{display:block}
+  nav.main ul{display:none;flex-direction:column}
+  nav.main.open ul{display:flex}
+  nav.main a{border-bottom:1px solid rgba(255,255,255,.15);border-left:4px solid transparent}
+  nav.main a[aria-current="page"]{border-bottom-color:rgba(255,255,255,.15);border-left-color:var(--orange)}
+  .objs li{grid-template-columns:1fr}
+  .objs .tag{justify-content:flex-start;padding:9px 20px;border-right:0;border-bottom:3px solid var(--orange)}
+  .cal li{grid-template-columns:1fr}
+  .cal .ctag{justify-content:flex-start;padding:9px 20px;border-right:0;border-bottom:3px solid var(--orange)}
+  .cal .cnm{padding-bottom:4px}
+  .cal .cpd{grid-column:1;padding:0 20px 14px}
+  .util .wrap{padding-block:10px}
+}
+
+</style>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs><path id="eustar" d="M0,-4 L0.898,-1.236 L3.804,-1.236 L1.453,0.472 L2.351,3.236 L0,1.528 L-2.351,3.236 L-1.453,0.472 L-3.804,-1.236 L-0.898,-1.236 Z"/></defs>
+</svg>
+
+<div class="util">
+  <div class="wrap">
+    <div class="eu">
+      <svg width="42" height="28" viewBox="0 0 90 60" role="img" aria-label="European Union emblem">
+        <rect width="90" height="60" fill="#039"/>
+        <g fill="#FC0">
+          <use href="#eustar" x="45" y="12"/><use href="#eustar" x="54" y="14.41"/>
+          <use href="#eustar" x="60.59" y="21"/><use href="#eustar" x="63" y="30"/>
+          <use href="#eustar" x="60.59" y="39"/><use href="#eustar" x="54" y="45.59"/>
+          <use href="#eustar" x="45" y="48"/><use href="#eustar" x="36" y="45.59"/>
+          <use href="#eustar" x="29.41" y="39"/><use href="#eustar" x="27" y="30"/>
+          <use href="#eustar" x="29.41" y="21"/><use href="#eustar" x="36" y="14.41"/>
+        </g>
+      </svg>
+      <span id="eutext"></span>
+    </div>
+    <div class="util-right">
+      <span class="grant" id="granttext"></span>
+      <span class="lang"><b>EN</b><i>·</i>FR<i>·</i>ES<i>·</i>DE</span>
+    </div>
+  </div>
+</div>
+
+<header class="mast">
+  <div class="wrap">
+    <a class="brand" href="#" data-nav="project">
+      <span class="mark" id="brandmark"></span>
+      <span class="sub" id="brandsub"></span>
+    </a>
+    <button class="navtoggle" id="navtoggle" aria-expanded="false" aria-controls="mainmenu">Menu</button>
+  </div>
+</header>
+
+<nav class="main" id="mainnav" aria-label="Main">
+  <div class="wrap" style="padding-inline:0">
+    <ul id="mainmenu">
+      <li><a href="#" data-nav="project" aria-current="page"></a></li>
+      <li><a href="#" data-nav="consortium"></a></li>
+      <li><a href="#" data-nav="resources"></a></li>
+      <li><a href="#" data-nav="news"></a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="lanes" aria-hidden="true">
+    <span style="top:18%"></span><span style="top:34%"></span><span style="top:50%"></span>
+    <span style="top:66%"></span><span style="top:82%"></span>
+  </div>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow" id="heroeyebrow"></p>
+    <h1 class="htitle" id="herotitle"></h1>
+    <p class="hsub" id="herosub"></p>
+    <div class="rule"></div>
+  </div>
+</section>
+
+<div class="crumb">
+  <div class="wrap"><a href="#" data-nav="project">I-Run-Healthy</a> <span>›</span> <span id="crumbnow"></span></div>
+</div>
+
+<main id="main">
+  <article class="page is-on" id="page-project"></article>
+  <article class="page" id="page-consortium"></article>
+  <article class="page" id="page-resources"></article>
+  <article class="page" id="page-news"></article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <div class="mark" id="fmark"></div>
+        <p id="ftagline"></p>
+        <div style="margin-top:16px;display:flex;align-items:center;gap:10px">
+          <svg width="38" height="25" viewBox="0 0 90 60" role="img" aria-label="European Union emblem">
+            <rect width="90" height="60" fill="#039"/>
+            <g fill="#FC0">
+              <use href="#eustar" x="45" y="12"/><use href="#eustar" x="54" y="14.41"/>
+              <use href="#eustar" x="60.59" y="21"/><use href="#eustar" x="63" y="30"/>
+              <use href="#eustar" x="60.59" y="39"/><use href="#eustar" x="54" y="45.59"/>
+              <use href="#eustar" x="45" y="48"/><use href="#eustar" x="36" y="45.59"/>
+              <use href="#eustar" x="29.41" y="39"/><use href="#eustar" x="27" y="30"/>
+              <use href="#eustar" x="29.41" y="21"/><use href="#eustar" x="36" y="14.41"/>
+            </g>
+          </svg>
+          <span id="feutext" style="font-size:13px;color:#96B4CE;line-height:1.3"></span>
+        </div>
+      </div>
+      <div>
+        <h4 id="fhsections"></h4>
+        <ul>
+          <li><a href="#" data-nav="project"></a></li>
+          <li><a href="#" data-nav="consortium"></a></li>
+          <li><a href="#" data-nav="resources"></a></li>
+          <li><a href="#" data-nav="news"></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 id="fhpartners"></h4>
+        <ul id="fpartners"></ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span id="flegal"></span>
+      <button class="totop" id="totop">Back to top ↑</button>
+    </div>
+  </div>
+</footer>
+
+<script>
+/*CONTENT_START*/var CONTENT = {
+ "brand.pre": "I-Run-",
+ "brand.accent": "Healthy",
+ "brand.tagline": "Athlete health protection in athletics",
+ "util.eu": "Co-funded by the<br>European Union",
+ "util.grant": "ERASMUS-SPORT-2025",
+ "nav.project": "The project",
+ "nav.consortium": "Project consortium",
+ "nav.resources": "Resources and tools",
+ "nav.news": "News",
+ "hero.eyebrow": "European Athletics",
+ "hero.project.title": "Run healthy.<br>Stay in the sport.",
+ "hero.project.sub": "Education platform on athlete health protection for the athletics community",
+ "hero.consortium.title": "The consortium",
+ "hero.consortium.sub": "Three research institutions, a European development agency and the governing body for athletics in Europe.",
+ "hero.resources.title": "Resources<br>and tools",
+ "hero.resources.sub": "Everything the project produces is free and openly accessible.",
+ "hero.news.title": "News",
+ "hero.news.sub": "",
+ "project.lede": "I-Run-Healthy is funded by the European Union under the Erasmus+ Sport 2025 programme (ERASMUS-SPORT-2025) for a period of two years: from January 2026 to January 2027. Coordinated by Université Jean Monnet Saint-Étienne (France), together with European Athletics, the project aims to enhance the quality of the athletics athlete's environment by promoting health protection. It is delivered with MSH Medical School Hamburg (Germany), Universitat Internacional de Catalunya (Spain) and the Agency for the Development of Athletics in Europe (France).",
+ "project.h2.objectives": "Project objectives",
+ "project.obj.intro1": "Athletics brings substantial health benefits, but athletes are also affected by injuries, illnesses, relative energy deficiency and mental health problems. Education is a recognised route to protecting athlete health.",
+ "project.obj.intro2": "I-Run-Healthy responds by developing a free digital education platform for the whole athletics community. The work is organised around four specific objectives, each delivered through a work package:",
+ "obj.1.tag": "1",
+ "obj.1.title": "Understand what the community needs",
+ "obj.1.text": "Assess the level of health literacy, barriers, needs, and perspectives of athletes, coaches, health professionals and administrative leaders, and use the findings to guide what the platform covers and how it is organised (WP2).",
+ "obj.2.tag": "2",
+ "obj.2.title": "Build the platform",
+ "obj.2.text": "Develop the I-Run-Healthy web platform with educational content tailored to each stakeholder group in at least four languages: English, French, Spanish and German (WP3).",
+ "obj.3.tag": "3",
+ "obj.3.title": "Implement and evaluate",
+ "obj.3.text": "Roll the platform out across European Athletics member federations, and evaluate its reach, its use, and its effect on knowledge and on day-to-day health protection behaviour (WP4).",
+ "obj.4.tag": "4",
+ "obj.4.title": "Share what we learn",
+ "obj.4.text": "Communicate and disseminate the results to the athletics community, the scientific community and European sport policy, through the European Athletics network, peer-reviewed publication and an international conference (WP5).",
+ "project.obj.outro1": "Educational resources are produced through co-construction with the athletics community, and refined as evidence from the research phase emerges. Inclusion and diversity sit at the centre of the approach: all content is free, openly accessible, adapted to a range of formats and levels, and produced in at least four languages.",
+ "project.obj.outro2": "To deliver this, the consortium brings together four organisations across different European countries: France, Germany, and Spain, supported by European Athletics and its 51 member federations.",
+ "project.h2.impact": "The impact of I-Run-Healthy",
+ "project.impact.p1": "Around two-thirds of athletics athletes sustain at least one injury during a season, and after several years of participation almost all have experienced at least one. These problems affect athletes physically, psychologically and socially, with consequences for body function, performance and career, and, in some cases, long-term sequelae.",
+ "project.impact.p2": "I-Run-Healthy aims to have a positive effect on research, sporting practice and policy across Europe, around four axes:",
+ "axis.1.label": "01",
+ "axis.1.title": "Understanding",
+ "axis.1.text": "Establish the level of health literacy, knowledge, current practices and behaviours across the athletics community, together with perceived barriers and needs to further shape how health information can be found, trusted and applied.",
+ "axis.2.label": "02",
+ "axis.2.title": "Co-construction",
+ "axis.2.text": "Build resources with athletes, coaches, health professionals and administrative leaders to truly match the designed content to their actual needs.",
+ "axis.3.label": "03",
+ "axis.3.title": "Access",
+ "axis.3.text": "Keep the content free, openly accessible and multilingual, so that no participant is excluded by language, cost, competition level or background.",
+ "axis.4.label": "04",
+ "axis.4.title": "Knowledge & Behaviour",
+ "axis.4.text": "Increase awareness and knowledge towards athlete health protection practices, measuring change in knowledge and in everyday health protection behaviour.",
+ "reach.label": "Strategic reach",
+ "reach.text": "Through European Athletics and its 51 member federations, the platform will be delivered to:",
+ "fig.1.num": "+1,500",
+ "fig.1.cap": "athletes",
+ "fig.2.num": "+100",
+ "fig.2.cap": "coaches",
+ "fig.3.num": "+60",
+ "fig.3.cap": "health professionals",
+ "fig.4.num": "+50",
+ "fig.4.cap": "administrative leaders",
+ "project.h2.timeline": "Calendar",
+ "project.timeline.intro": "The project runs across 2026 and 2027. Each phase builds on the one before it, from understanding what the community needs through to sharing the results.",
+ "wp.1.tag": "WP2",
+ "wp.1.name": "Understand what the community needs",
+ "wp.1.period": "August-December 2026",
+ "wp.2.tag": "WP3",
+ "wp.2.name": "Build the platform",
+ "wp.2.period": "January-March 2027",
+ "wp.3.tag": "WP4.1",
+ "wp.3.name": "Platform implementation",
+ "wp.3.period": "March-April 2027",
+ "wp.4.tag": "WP4.2",
+ "wp.4.name": "Platform evaluation",
+ "wp.4.period": "August-November 2027",
+ "wp.5.tag": "WP5",
+ "wp.5.name": "Share what we learn",
+ "wp.5.period": "2026 & 2027",
+ "contact.title": "Need more information?",
+ "contact.text": "For more information about I-Run-Healthy, or about possible collaboration on athlete health protection in athletics, please contact the project coordination team at Université Jean Monnet Saint-Étienne: pascal.edouard@univ-st-etienne.fr",
+ "consortium.lede": "I-Run-Healthy brings together three universities and research centres, a European sport development agency and European Athletics.",
+ "org.1.name": "Université Jean Monnet Saint-Étienne",
+ "org.1.country": "France",
+ "org.1.text": "A multidisciplinary university within the Universities Community of Lyon Saint-Étienne. The project team belongs to the Inter-university Laboratory of Human Movement Biology (LIBM), which gathers around 130 researchers, clinicians and engineers, and is internationally recognised for its work in exercise physiology, biomechanics and sport applied to health. UJM coordinates the project and chairs the Scientific Board.",
+ "org.1.m1.who": "Pascal Edouard",
+ "org.1.m1.what": "Researcher · Project director",
+ "org.1.m2.who": "Pierre-Eddy Dandrieux",
+ "org.1.m2.what": "Researcher · Project coordination and scientific tasks",
+ "org.1.m3.who": "Oriol Bonell Monsonís",
+ "org.1.m3.what": "Researcher · Project coordination and scientific tasks",
+ "org.2.name": "MSH Medical School Hamburg",
+ "org.2.country": "Germany",
+ "org.2.text": "A state-recognised medical university and university of applied sciences in Hamburg's HafenCity, with an interdisciplinary focus on sport, health and medicine. The Institute of Interdisciplinary Exercise Science and Sports Medicine (IIES) contributes expertise in sports medicine and injury prevention in elite sport, and leads the barriers and needs research.",
+ "org.2.m1.who": "Karsten Hollander",
+ "org.2.m1.what": "Professor of Sports Medicine · Project coordinator",
+ "org.2.m2.who": "",
+ "org.2.m2.what": "",
+ "org.3.name": "Universitat Internacional de Catalunya",
+ "org.3.country": "Spain",
+ "org.3.text": "A private university in Barcelona with a Faculty of Medicine and Health Sciences on the Sant Cugat campus, holder of the European Commission's HR Excellence in Research Award. UIC Barcelona brings expertise in research methodology and statistics applied to physiotherapy, sports medicine and exercise, leads the implementation and evaluation work, and chairs the Quality Control Committee.",
+ "org.3.m1.who": "David Blanco",
+ "org.3.m1.what": "Associate Professor · Project coordinator",
+ "org.3.m2.who": "",
+ "org.3.m2.what": "",
+ "org.4.name": "Agency for the Development of Athletics in Europe",
+ "org.4.country": "France",
+ "org.4.text": "A non-profit international association supporting the member federations of European Athletics in promoting and developing athletics in all its forms. ADAE led the previous Erasmus+ project I-Run-Clean, and brings that experience to the development of the platform, to compliance with Erasmus+ requirements, and to communication and dissemination.",
+ "org.4.m1.who": "Cyril Savidan",
+ "org.4.m1.what": "Administrator · Project collaborator",
+ "org.4.m2.who": "",
+ "org.4.m2.what": "",
+ "org.5.name": "European Athletics",
+ "org.5.country": "Switzerland",
+ "org.5.text": "The governing body for athletics in Europe, serving 51 member federations from its headquarters in Lausanne. European Athletics hosts the platform as an extension of its e-learning environment, mobilises the member federation network for both research phases, and has committed to sustaining the resource beyond the funding period.",
+ "org.5.m1.who": "Pedro Aguiar Branco",
+ "org.5.m1.what": "Chair, European Athletics Medical and Anti-Doping Commission · Project collaborator",
+ "org.5.m2.who": "",
+ "org.5.m2.what": "",
+ "resources.lede": "Resources and tools will be added to this site as they are produced by the project consortium. All materials are free and openly accessible.",
+ "resources.h2": "What will be published here",
+ "card.1.title": "The I-Run-Healthy platform",
+ "card.1.status": "Under construction",
+ "card.2.title": "Surveys for stakeholders",
+ "card.2.status": "In preparation · COMING SOON",
+ "card.3.title": "Reports and summaries",
+ "card.3.status": "From 2027",
+ "card.4.title": "Scientific articles",
+ "card.4.status": "From 2027",
+ "card.5.title": "Communicating key findings",
+ "card.5.status": "From 2027",
+ "resources.contact.title": "Looking for something specific?",
+ "resources.contact.text": "If you are looking for a resource that is not yet published here, or would like to discuss reusing project materials within your federation, please contact the project coordination team: pascal.edouard@univ-st-etienne.fr",
+ "news.1.when": "01",
+ "news.1.title": "Social media",
+ "news.2.when": "02",
+ "news.2.title": "In press",
+ "news.3.when": "03",
+ "news.3.title": "Dissemination, webinars and seminars",
+ "footer.tagline": "Enhancing the quality of the athletics athlete's environment by promoting health protection.",
+ "footer.h.sections": "Sections",
+ "footer.h.partners": "Partners",
+ "footer.partner.1": "Université Jean Monnet Saint-Étienne",
+ "footer.partner.2": "MSH Medical School Hamburg",
+ "footer.partner.3": "Universitat Internacional de Catalunya",
+ "footer.partner.4": "Agency for the Development of Athletics in Europe",
+ "footer.partner.5": "European Athletics",
+ "footer.legal": "Erasmus+ Sport 2025 · 2026–2027"
+};/*CONTENT_END*/
+// ── helpers ───────────────────────────────────────────────
+function C(k){ var v = CONTENT[k]; return (v === undefined || v === null) ? "" : String(v); }
+function has(k){ return C(k).trim() !== ""; }
+function el(id){ return document.getElementById(id); }
+
+// ── chrome (header / nav / footer) ────────────────────────
+function renderChrome(){
+  el("brandmark").innerHTML = C("brand.pre") + "<em>" + C("brand.accent") + "</em>";
+  el("brandsub").innerHTML  = C("brand.tagline");
+  el("eutext").innerHTML    = C("util.eu");
+  el("granttext").innerHTML = C("util.grant");
+  el("heroeyebrow").innerHTML = C("hero.eyebrow");
+
+  ["project","consortium","resources","news"].forEach(function(k){
+    document.querySelectorAll('nav.main a[data-nav="'+k+'"], footer a[data-nav="'+k+'"]')
+      .forEach(function(a){ a.innerHTML = C("nav."+k); });
+  });
+
+  el("fmark").innerHTML      = C("brand.pre") + "<em>" + C("brand.accent") + "</em>";
+  el("ftagline").innerHTML   = C("footer.tagline");
+  el("feutext").innerHTML    = C("util.eu");
+  el("fhsections").innerHTML = C("footer.h.sections");
+  el("fhpartners").innerHTML = C("footer.h.partners");
+  el("flegal").innerHTML     = C("footer.legal");
+
+  var pl = "";
+  for(var i=1;i<=5;i++){ if(has("footer.partner."+i)) pl += "<li>"+C("footer.partner."+i)+"</li>"; }
+  el("fpartners").innerHTML = pl;
+}
+
+// ── page: the project ─────────────────────────────────────
+function renderProject(){
+  var h = '<p class="lede">'+C("project.lede")+'</p>';
+
+  h += '<h2 class="sec">'+C("project.h2.objectives")+'</h2><div class="barline"></div>';
+  h += '<p>'+C("project.obj.intro1")+'</p><p>'+C("project.obj.intro2")+'</p>';
+  h += '<ul class="objs">';
+  for(var i=1;i<=4;i++){
+    if(!has("obj."+i+".title")) continue;
+    h += '<li><div class="tag">'+C("obj."+i+".tag")+'</div>'+
+         '<div class="txt"><b>'+C("obj."+i+".title")+'</b>'+
+         '<span>'+C("obj."+i+".text")+'</span></div></li>';
+  }
+  h += '</ul>';
+  h += '<p style="margin-top:26px">'+C("project.obj.outro1")+'</p><p>'+C("project.obj.outro2")+'</p>';
+
+  h += '<h2 class="sec">'+C("project.h2.impact")+'</h2><div class="barline"></div>';
+  h += '<p>'+C("project.impact.p1")+'</p><p>'+C("project.impact.p2")+'</p>';
+  h += '<div class="axes">';
+  for(var a=1;a<=4;a++){
+    if(!has("axis."+a+".title")) continue;
+    h += '<div class="axis"><div class="n">'+C("axis."+a+".label")+'</div>'+
+         '<h4>'+C("axis."+a+".title")+'</h4><p>'+C("axis."+a+".text")+'</p></div>';
+  }
+  h += '</div>';
+
+  h += '<div class="reach"><p class="rlabel">'+C("reach.label")+'</p>'+
+       '<p class="rtext">'+C("reach.text")+'</p><div class="figs">';
+  for(var f=1;f<=5;f++){
+    if(!has("fig."+f+".num")) continue;
+    h += '<div class="fig"><div class="num">'+C("fig."+f+".num")+'</div>'+
+         '<div class="cap">'+C("fig."+f+".cap")+'</div></div>';
+  }
+  h += '</div></div>';
+
+  // Calendar — simple ordered list, no chart
+  h += '<h2 class="sec">'+C("project.h2.timeline")+'</h2><div class="barline"></div>';
+  if(has("project.timeline.intro")) h += '<p>'+C("project.timeline.intro")+'</p>';
+  var cal = "";
+  for(var w=1;w<=6;w++){
+    if(!has("wp."+w+".name")) continue;
+    cal += '<li><div class="ctag">'+C("wp."+w+".tag")+'</div>'+
+           '<div class="cnm">'+C("wp."+w+".name")+'</div>'+
+           '<div class="cpd">'+C("wp."+w+".period")+'</div></li>';
+  }
+  if(cal) h += '<ul class="cal">'+cal+'</ul>';
+
+  h += '<div class="contact"><h2>'+C("contact.title")+'</h2><p>'+C("contact.text")+'</p></div>';
+  el("page-project").innerHTML = '<div class="wrap body-wrap">'+h+'</div>';
+}
+
+// ── page: consortium ──────────────────────────────────────
+function renderConsortium(){
+  var h = '<p class="lede">'+C("consortium.lede")+'</p>';
+  if(has("consortium.banner.title") || has("consortium.banner.text")){
+    h += '<div class="orgphoto"><div class="lanes" aria-hidden="true">'+
+         '<span style="top:20%"></span><span style="top:40%"></span>'+
+         '<span style="top:60%"></span><span style="top:80%"></span></div>'+
+         '<div class="op-in"><p class="op-t">'+C("consortium.banner.title")+'</p>'+
+         '<p>'+C("consortium.banner.text")+'</p></div></div>';
+  }
+  for(var n=1;n<=6;n++){
+    if(!has("org."+n+".name")) continue;
+    h += '<div class="org"><div class="oh"><h3>'+C("org."+n+".name")+'</h3>';
+    if(has("org."+n+".country")) h += '<span class="pill">'+C("org."+n+".country")+'</span>';
+    h += '</div><p>'+C("org."+n+".text")+'</p>';
+    var rows = "";
+    for(var m=1;m<=3;m++){
+      if(!has("org."+n+".m"+m+".who")) continue;
+      rows += '<li><span class="who">'+C("org."+n+".m"+m+".who")+'</span>'+
+              '<span class="what">'+C("org."+n+".m"+m+".what")+'</span></li>';
+    }
+    if(rows) h += '<ul class="roles">'+rows+'</ul>';
+    h += '</div>';
+  }
+  el("page-consortium").innerHTML = '<div class="wrap body-wrap">'+h+'</div>';
+}
+
+// ── page: resources ───────────────────────────────────────
+function renderResources(){
+  var h = '<p class="lede">'+C("resources.lede")+'</p>';
+  h += '<h2 class="sec">'+C("resources.h2")+'</h2><div class="barline"></div>';
+  h += '<div class="cards">';
+  for(var i=1;i<=8;i++){
+    if(!has("card."+i+".title")) continue;
+    h += '<div class="card"><h3>'+C("card."+i+".title")+'</h3>';
+    if(has("card."+i+".text")) h += '<p>'+C("card."+i+".text")+'</p>';
+    h += '<div class="status">'+C("card."+i+".status")+'</div></div>';
+  }
+  h += '</div>';
+  h += '<div class="contact"><h2>'+C("resources.contact.title")+'</h2>'+
+       '<p>'+C("resources.contact.text")+'</p></div>';
+  el("page-resources").innerHTML = '<div class="wrap body-wrap">'+h+'</div>';
+}
+
+// ── page: news ────────────────────────────────────────────
+function renderNews(){
+  var h = "";
+  if(has("news.lede")) h += '<p class="lede">'+C("news.lede")+'</p>';
+  var items = "";
+  for(var i=1;i<=8;i++){
+    if(!has("news."+i+".when") && !has("news."+i+".title")) continue;
+    items += '<div class="item"><div class="when">'+C("news."+i+".when")+'</div><div>'+
+             '<h3>'+C("news."+i+".title")+'</h3>';
+    if(has("news."+i+".text")) items += '<p>'+C("news."+i+".text")+'</p>';
+    items += '</div></div>';
+  }
+  if(items) h += '<div class="items">'+items+'</div>';
+  el("page-news").innerHTML = '<div class="wrap body-wrap">'+h+'</div>';
+}
+
+// ── routing ───────────────────────────────────────────────
+var CURRENT = "project";
+function go(key){
+  CURRENT = key;
+  document.querySelectorAll(".page").forEach(function(p){ p.classList.remove("is-on"); });
+  var t = el("page-"+key); if(t) t.classList.add("is-on");
+  document.querySelectorAll("nav.main a").forEach(function(a){ a.removeAttribute("aria-current"); });
+  var act = document.querySelector('nav.main a[data-nav="'+key+'"]');
+  if(act) act.setAttribute("aria-current","page");
+  el("herotitle").innerHTML = C("hero."+key+".title");
+  el("herosub").innerHTML   = C("hero."+key+".sub");
+  el("herosub").style.display = has("hero."+key+".sub") ? "" : "none";
+  el("crumbnow").innerHTML  = C("nav."+key);
+  document.title = (C("nav."+key) || "I-Run-Healthy") + " | I-Run-Healthy";
+  el("mainnav").classList.remove("open");
+  el("navtoggle").setAttribute("aria-expanded","false");
+  window.scrollTo({top:0, behavior:"auto"});
+}
+
+function renderAll(){
+  renderChrome(); renderProject(); renderConsortium(); renderResources(); renderNews();
+  go(CURRENT);
+}
+
+// ── events ────────────────────────────────────────────────
+document.addEventListener("click", function(e){
+  var a = e.target.closest ? e.target.closest("[data-nav]") : null;
+  if(a){ e.preventDefault(); go(a.getAttribute("data-nav")); }
+});
+el("navtoggle").addEventListener("click", function(){
+  var open = el("mainnav").classList.toggle("open");
+  this.setAttribute("aria-expanded", open ? "true" : "false");
+});
+el("totop").addEventListener("click", function(){ window.scrollTo({top:0, behavior:"smooth"}); });
+
+renderAll();
+
+</script>
